@@ -35,6 +35,7 @@ try:
 except ImportError:
     wheel = None
 
+from pip.locations import running_under_virtualenv
 
 logger = logging.getLogger(__name__)
 
@@ -65,6 +66,12 @@ class InstallCommand(RequirementCommand):
     def __init__(self, *args, **kw):
         super(InstallCommand, self).__init__(*args, **kw)
 
+        default_user = True
+        if running_under_virtualenv():
+            default_user = False
+        if os.geteuid() == 0:
+            default_user = False
+
         cmd_opts = self.cmd_opts
 
         cmd_opts.add_option(cmdoptions.requirements())
@@ -92,10 +99,21 @@ class InstallCommand(RequirementCommand):
             '--user',
             dest='use_user_site',
             action='store_true',
+            default=default_user,
             help="Install to the Python user install directory for your "
                  "platform. Typically ~/.local/, or %APPDATA%\\Python on "
                  "Windows. (See the Python documentation for site.USER_BASE "
-                 "for full details.)")
+                 "for full details.)  On Debian systems, this is the "
+                 "default when running outside of a virtual environment "
+                 "and not as root.")
+
+        cmd_opts.add_option(
+            '--system',
+            dest='use_user_site',
+            action='store_false',
+            help="Install using the system scheme (overrides --user on "
+                 "Debian systems)")
+
         cmd_opts.add_option(
             '--no-user',
             dest='use_user_site',
@@ -154,6 +172,7 @@ class InstallCommand(RequirementCommand):
             '-I', '--ignore-installed',
             dest='ignore_installed',
             action='store_true',
+            default=default_user,
             help='Ignore the installed packages (reinstalling instead).')
 
         cmd_opts.add_option(cmdoptions.ignore_requires_python())
