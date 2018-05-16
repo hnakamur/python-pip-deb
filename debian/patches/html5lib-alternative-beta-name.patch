@@ -1,0 +1,25 @@
+From 03fda551552d2f2b6f541ade5faabffda2f9b9cf Mon Sep 17 00:00:00 2001
+From: Barry Warsaw <barry@python.org>
+Date: Mon, 21 Nov 2016 13:27:41 -0500
+Subject: Use alternative html5lib beta version number.
+
+This matches what's in the Debian archive.
+
+Patch-Name: html5lib-alternative-beta-name.patch
+---
+ pip/_vendor/vendor.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pip/_vendor/vendor.txt b/pip/_vendor/vendor.txt
+index 6d07f2d..8f878ba 100644
+--- a/pip/_vendor/vendor.txt
++++ b/pip/_vendor/vendor.txt
+@@ -1,7 +1,7 @@
+ appdirs==1.4.0
+ distlib==0.2.4
+ distro==1.0.1
+-html5lib==1.0b10
++html5lib==0.999999999-1
+ six==1.10.0
+ colorama==0.3.7
+ requests==2.11.1
