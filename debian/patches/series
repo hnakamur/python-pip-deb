@@ -1,7 +1,7 @@
-hands-off-system-packages.patch
-debundle.patch
-handle-unbundled-requests.patch
-set_user_default.patch
-disable-pip-version-check.patch
-html5lib-alternative-beta-name.patch
-use-unvendored-urllib3.diff
+0001-Prevent-pip-from-removing-system-packages.patch
+0002-Devendorize-wheels-and-use-system-built-wheels.patch
+0003-Debian-already-unbundles-things-from-requests.patch
+0004-Default-to-user-in-non-virtual-environments.patch
+0005-Set-disable-pip-version-check-True-by-default.patch
+0006-Use-alternative-html5lib-beta-version-number.patch
+0007-Use-unvendored-urllib3.patch

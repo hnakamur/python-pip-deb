@@ -1,17 +1,16 @@
-From f74962daa477cdc7fd729185710ec9906f58f2ae Mon Sep 17 00:00:00 2001
 From: Barry Warsaw <barry@python.org>
 Date: Thu, 3 Dec 2015 17:24:13 -0500
 Subject: Devendorize wheels and use system built wheels.
 
 Patch-Name: debundle.patch
 ---
- pip/_vendor/__init__.py | 4 ++--
+ src/pip/_vendor/__init__.py | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/pip/_vendor/__init__.py b/pip/_vendor/__init__.py
-index bee5f5e..7e9da3e 100644
---- a/pip/_vendor/__init__.py
-+++ b/pip/_vendor/__init__.py
+diff --git a/src/pip/_vendor/__init__.py b/src/pip/_vendor/__init__.py
+index a0aae81..991fad8 100644
+--- a/src/pip/_vendor/__init__.py
++++ b/src/pip/_vendor/__init__.py
 @@ -14,13 +14,13 @@ import sys
  # Downstream redistributors which have debundled our dependencies should also
  # patch this value to be true. This will trigger the additional patching

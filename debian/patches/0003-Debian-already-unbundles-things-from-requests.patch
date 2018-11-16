@@ -1,18 +1,17 @@
-From d0d585984310634ec865c0f96e68eb78e209d7ca Mon Sep 17 00:00:00 2001
 From: Barry Warsaw <barry@python.org>
 Date: Fri, 29 Jan 2016 16:56:43 -0500
 Subject: Debian already unbundles things from requests.
 
 Patch-Name: handle-unbundled-requests.patch
 ---
- pip/_vendor/__init__.py | 8 ++++++--
+ src/pip/_vendor/__init__.py | 8 ++++++--
  1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/pip/_vendor/__init__.py b/pip/_vendor/__init__.py
-index 7e9da3e..8e76ab8 100644
---- a/pip/_vendor/__init__.py
-+++ b/pip/_vendor/__init__.py
-@@ -89,8 +89,12 @@ if DEBUNDLED:
+diff --git a/src/pip/_vendor/__init__.py b/src/pip/_vendor/__init__.py
+index 991fad8..07db110 100644
+--- a/src/pip/_vendor/__init__.py
++++ b/src/pip/_vendor/__init__.py
+@@ -91,8 +91,12 @@ if DEBUNDLED:
      vendored("requests.packages.urllib3.fields")
      vendored("requests.packages.urllib3.filepost")
      vendored("requests.packages.urllib3.packages")

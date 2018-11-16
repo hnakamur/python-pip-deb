@@ -1,4 +1,3 @@
-From 64446a63a0e31bad2f6927f2213710dfcc50b3ab Mon Sep 17 00:00:00 2001
 From: Geoffrey Thomas <geofft@ldpreload.com>
 Date: Wed, 3 Dec 2014 11:18:11 -0600
 Subject: Prevent pip from removing system packages.
@@ -16,14 +15,14 @@ Last-Update: 2014-12-04
 
 Patch-Name: hands-off-system-packages.patch
 ---
- pip/utils/__init__.py | 36 +++++++++++++++++++++++++++---------
+ src/pip/_internal/utils/misc.py | 36 +++++++++++++++++++++++++++---------
  1 file changed, 27 insertions(+), 9 deletions(-)
 
-diff --git a/pip/utils/__init__.py b/pip/utils/__init__.py
-index 815bd33..0d25d91 100644
---- a/pip/utils/__init__.py
-+++ b/pip/utils/__init__.py
-@@ -276,22 +276,40 @@ def renames(old, new):
+diff --git a/src/pip/_internal/utils/misc.py b/src/pip/_internal/utils/misc.py
+index 84a421f..45ecd07 100644
+--- a/src/pip/_internal/utils/misc.py
++++ b/src/pip/_internal/utils/misc.py
+@@ -289,22 +289,40 @@ def renames(old, new):
  
  def is_local(path):
      """

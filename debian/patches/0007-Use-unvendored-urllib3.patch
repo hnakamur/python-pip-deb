@@ -1,0 +1,36 @@
+From: Hiroaki Nakamura <hnakamur@gmail.com>
+Date: Fri, 16 Nov 2018 11:02:30 +0900
+Subject: Use unvendored urllib3
+
+---
+ src/pip/_internal/__init__.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/pip/_internal/__init__.py b/src/pip/_internal/__init__.py
+index 276124d..b70be25 100755
+--- a/src/pip/_internal/__init__.py
++++ b/src/pip/_internal/__init__.py
+@@ -16,7 +16,10 @@ import sys
+ # to add socks as yet another dependency for pip, nor do I want to allow-stder
+ # in the DEP-8 tests, so just suppress the warning.  pdb tells me this has to
+ # be done before the import of pip.vcs.
+-from pip._vendor.urllib3.exceptions import DependencyWarning
++try:
++  from pip._vendor.urllib3.exceptions import DependencyWarning
++except ImportError:
++  from urllib3.exceptions import DependencyWarning
+ warnings.filterwarnings("ignore", category=DependencyWarning)  # noqa
+ 
+ # We want to inject the use of SecureTransport as early as possible so that any
+@@ -43,7 +46,10 @@ from pip._internal.commands import commands_dict
+ from pip._internal.exceptions import PipError
+ from pip._internal.utils import deprecation
+ from pip._internal.vcs import git, mercurial, subversion, bazaar  # noqa
+-from pip._vendor.urllib3.exceptions import InsecureRequestWarning
++try:
++    from pip._vendor.urllib3.exceptions import InsecureRequestWarning
++except ImportError:
++    from urllib3.exceptions import InsecureRequestWarning
+ 
+ logger = logging.getLogger(__name__)
+ 
