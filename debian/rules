@@ -11,13 +11,13 @@ export DIRTBIKE_DIRECTORY=\
 %:
 	dh $@ --with python2,python3 --buildsystem=pybuild
 
-# Patching DEBUNDLED=True in pip/_vendor/__init__.py is enough to disable
-# vendoring.  We remove these files (as suggested by pip/_vendor/README.rst)
+# Patching DEBUNDLED=True in src/pip/_vendor/__init__.py is enough to disable
+# vendoring.  We remove these files (as suggested by src/pip/_vendor/README.rst)
 # as added insurance.  find/rm code adapted from upstream's travis run.sh.
 override_dh_auto_build:
-	find pip/_vendor -depth \
-		-not -regex 'pip/_vendor/__init__\.py$$' \
-		-not -regex 'pip/_vendor$$' \
+	find src/pip/_vendor -depth \
+		-not -regex 'src/pip/_vendor/__init__\.py$$' \
+		-not -regex 'src/pip/_vendor$$' \
 		-exec rm -rf {} \;
 	dh_auto_build
 
