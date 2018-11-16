@@ -1,3 +1,10 @@
+python-pip (18.1-1~ubuntu1ppa1) bionic; urgency=medium
+
+  * New upstream version 18.1
+  * Rediff patches
+
+ -- Hiroaki Nakamura <hnakamur@gmail.com>  Fri, 16 Nov 2018 11:03:42 +0900
+
 python-pip (9.0.1-2.3~ubuntu1) bionic-proposed; urgency=medium
 
   * SRU: LP: #1771624.
