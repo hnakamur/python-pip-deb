@@ -70,9 +70,6 @@ override_dh_auto_install:
 		--universal \
 		-d $(CURDIR)/debian/python-pip-whl/usr/share/python-wheels
 
-override_dh_installchangelogs:
-	dh_installchangelogs CHANGES.txt
-
 override_dh_installman:
 	mkdir -p debian/tmp
 	rst2man debian/pip-manpage.rst > debian/tmp/pip.man
