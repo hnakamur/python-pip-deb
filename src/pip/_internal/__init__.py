@@ -16,7 +16,10 @@ import sys
 # to add socks as yet another dependency for pip, nor do I want to allow-stder
 # in the DEP-8 tests, so just suppress the warning.  pdb tells me this has to
 # be done before the import of pip.vcs.
-from pip._vendor.urllib3.exceptions import DependencyWarning
+try:
+  from pip._vendor.urllib3.exceptions import DependencyWarning
+except ImportError:
+  from urllib3.exceptions import DependencyWarning
 warnings.filterwarnings("ignore", category=DependencyWarning)  # noqa
 
 # We want to inject the use of SecureTransport as early as possible so that any
@@ -43,7 +46,10 @@ from pip._internal.commands import commands_dict
 from pip._internal.exceptions import PipError
 from pip._internal.utils import deprecation
 from pip._internal.vcs import git, mercurial, subversion, bazaar  # noqa
-from pip._vendor.urllib3.exceptions import InsecureRequestWarning
+try:
+    from pip._vendor.urllib3.exceptions import InsecureRequestWarning
+except ImportError:
+    from urllib3.exceptions import InsecureRequestWarning
 
 logger = logging.getLogger(__name__)
 
