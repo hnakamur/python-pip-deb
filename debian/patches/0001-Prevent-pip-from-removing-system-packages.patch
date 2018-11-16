@@ -51,7 +51,7 @@ index 84a421f..45ecd07 100644
 +    if running_under_virtualenv():
 +        return path.startswith(normalize_path(sys.prefix))
 +    else:
-+        from pip.locations import distutils_scheme
++        from pip._internal.locations import distutils_scheme
 +        if path.startswith(prefix):
 +            for local_path in distutils_scheme("").values():
 +                if path.startswith(normalize_path(local_path)):

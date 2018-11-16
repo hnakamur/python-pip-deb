@@ -43,7 +43,7 @@ index 6fc178f..9afb356 100644
  except ImportError:
      wheel = None
  
-+from pip.locations import running_under_virtualenv
++from pip._internal.locations import running_under_virtualenv
  
  logger = logging.getLogger(__name__)
  
